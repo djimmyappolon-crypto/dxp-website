@@ -1,1 +1,48 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DXP Rewards</title><link rel="stylesheet" href="style.css"></head><body><header><h1>DXP Rewards</h1><p>Your Rewards. Your Future.</p><a class='btn' href='#'>Buy on PancakeSwap</a></header><section><h2>Mission</h2><p>DXP Rewards encourages long-term participation through a transparent staking program.</p></section><section><h2>Tokenomics</h2><ul><li>Total Supply: 100,000,000 DXP</li><li>BNB Smart Chain</li></ul></section><section><h2>Roadmap</h2><ol><li>Token Launch ✅</li><li>PancakeSwap ✅</li><li>Website</li><li>Whitepaper</li><li>Staking</li></ol></section><footer>© DXP Rewards</footer></body></html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DXP Rewards</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <img src="assets/logo.jpg" alt="DXP Logo" class="logo">
+
+        <h1>DXP Rewards</h1>
+
+        <p>Dix Fois Plus (DXP)</p>
+
+        <button id="connectWallet">
+            🔗 Connect Wallet
+        </button>
+
+        <p id="walletAddress">
+            Wallet non connecté
+        </p>
+
+        <hr>
+
+        <h2>Informations du Token</h2>
+
+        <p><strong>Nom :</strong> <span id="tokenName">Chargement...</span></p>
+
+        <p><strong>Symbole :</strong> <span id="tokenSymbol">Chargement...</span></p>
+
+        <p><strong>Supply :</strong> <span id="totalSupply">Chargement...</span></p>
+
+        <p><strong>Votre solde :</strong> <span id="balance">0</span></p>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
