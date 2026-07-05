@@ -52,3 +52,17 @@ document.getElementById("connectWallet").onclick = async () => {
   document.getElementById("balance").textContent =
     ethers.utils.formatUnits(balance, decimals);
 };
+async function updateTokenPrice() {
+    try {
+        const response = await fetch("https://api.dexscreener.com/latest/dex/pairs/bsc/0x727adc4fb4908cada01bfdf343c8934f738bb069");
+        const data = await response.json();
+
+        document.getElementById("tokenPrice").innerText =
+            "$" + Number(data.pair.priceUsd).toFixed(8);
+    } catch (e) {
+        document.getElementById("tokenPrice").innerText = "Indisponible";
+    }
+}
+
+updateTokenPrice();
+setInterval(updateTokenPrice, 30000);
