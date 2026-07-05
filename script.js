@@ -57,8 +57,12 @@ async function updateTokenPrice() {
         const response = await fetch("https://api.dexscreener.com/latest/dex/pairs/bsc/0x727adc4fb4908cada01bfdf343c8934f738bb069");
         const data = await response.json();
 
-        document.getElementById("tokenPrice").innerText =
-            "$" + Number(data.pair.priceUsd).toFixed(8);
+        if (data.pair && data.pair.priceUsd) {
+            document.getElementById("tokenPrice").innerText =
+                "$" + Number(data.pair.priceUsd).toFixed(8);
+        } else {
+            document.getElementById("tokenPrice").innerText = "En attente de cotation";
+        }
     } catch (e) {
         document.getElementById("tokenPrice").innerText = "Indisponible";
     }
