@@ -54,12 +54,15 @@ document.getElementById("connectWallet").onclick = async () => {
 };
 async function updateTokenPrice() {
     try {
-        const response = await fetch("https://api.dexscreener.com/latest/dex/pairs/bsc/0x727adc4fb4908cada01bfdf343c8934f738bb069");
+        const response = await fetch(
+            "https://api.dexscreener.com/latest/dex/tokens/0x32487931C92Ce46C8280e81B723c8CDDD414Fa60"
+        );
+
         const data = await response.json();
 
-        if (data.pair && data.pair.priceUsd) {
+        if (data.pairs && data.pairs.length > 0) {
             document.getElementById("tokenPrice").innerText =
-                "$" + Number(data.pair.priceUsd).toFixed(8);
+                "$" + Number(data.pairs[0].priceUsd).toFixed(8);
         } else {
             document.getElementById("tokenPrice").innerText = "En attente de cotation";
         }
