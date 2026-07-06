@@ -55,7 +55,7 @@ document.getElementById("connectWallet").onclick = async () => {
 async function updateTokenPrice() {
     try {
         const response = await fetch(
-    "https://api.dexscreener.com/latest/dex/tokens/0x32487931C92Ce46C8280e81B723c8CDDD414Fa60"
+  "https://api.dexscreener.com/latest/dex/pairs/bsc/0x727aDC4Fb4908CAdA01BfDf343C8934f738bb069"
 );
 
         const data = await response.json();
