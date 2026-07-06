@@ -55,22 +55,23 @@ document.getElementById("connectWallet").onclick = async () => {
 async function updateTokenPrice() {
     try {
         const response = await fetch(
-  "https://api.dexscreener.com/latest/dex/pairs/bsc/0x727aDC4Fb4908CAdA01BfDf343C8934f738bb069"
-);
+            "https://api.dexscreener.com/latest/dex/pairs/bsc/0x727aDC4Fb4908CAdA01BfDf343C8934f738bb069"
+        );
 
         const data = await response.json();
 
-        if (data.pairs && data.pairs.length > 0) {
+        if (data.pair && data.pair.priceUsd) {
             document.getElementById("tokenPrice").innerText =
-                const price = data.pairs[0].priceUsd;
-
-document.getElementById("tokenPrice").innerText =
-    price ? "$" + Number(price).toFixed(8) : "En attente de cotation";
+                "$" + Number(data.pair.priceUsd).toFixed(8);
+        } else if (data.pairs && data.pairs.length > 0 && data.pairs[0].priceUsd) {
+            document.getElementById("tokenPrice").innerText =
+                "$" + Number(data.pairs[0].priceUsd).toFixed(8);
         } else {
             document.getElementById("tokenPrice").innerText = "En attente de cotation";
         }
-    } catch (e) {
+    } catch (err) {
         document.getElementById("tokenPrice").innerText = "Indisponible";
+        console.error(err);
     }
 }
 
