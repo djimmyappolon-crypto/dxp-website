@@ -62,7 +62,10 @@ async function updateTokenPrice() {
 
         if (data.pairs && data.pairs.length > 0) {
             document.getElementById("tokenPrice").innerText =
-                "$" + Number(data.pairs[0].priceUsd).toFixed(8);
+                const price = data.pairs[0].priceUsd;
+
+document.getElementById("tokenPrice").innerText =
+    price ? "$" + Number(price).toFixed(8) : "En attente de cotation";
         } else {
             document.getElementById("tokenPrice").innerText = "En attente de cotation";
         }
