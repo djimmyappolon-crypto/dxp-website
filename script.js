@@ -54,24 +54,43 @@ document.getElementById("connectWallet").onclick = async () => {
 };
 async function updateTokenPrice() {
     try {
+        const provider = new ethers.providers.JsonRpcProvider(
+            "https://bsc-dataseed.binance.org/"
+        );
+
+        const PAIR_ADDRESS = "0x727adc4fb4908cada01bfdf343c8934f738bb069";
+
+        const PAIR_ABI = [
+            "function getReserves() view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)"
+        ];
+
+        const pair = new ethers.Contract(PAIR_ADDRESS, PAIR_ABI, provider);
+
+        const reserves = await pair.getReserves();
+
+        // token0 = DXP (18 décimales)
+        const dxpReserve = Number(ethers.utils.formatUnits(reserves.reserve0, 18));
+
+        // token1 = WBNB (18 décimales)
+        const wbnbReserve = Number(ethers.utils.formatUnits(reserves.reserve1, 18));
+
+        // Prix actuel du BNB en USD
         const response = await fetch(
-            "https://api.dexscreener.com/latest/dex/pairs/bsc/0x727aDC4Fb4908CAdA01BfDf343C8934f738bb069"
+            "https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd"
         );
 
         const data = await response.json();
 
-        if (data.pair && data.pair.priceUsd) {
-            document.getElementById("tokenPrice").innerText =
-                "$" + Number(data.pair.priceUsd).toFixed(8);
-        } else if (data.pairs && data.pairs.length > 0 && data.pairs[0].priceUsd) {
-            document.getElementById("tokenPrice").innerText =
-                "$" + Number(data.pairs[0].priceUsd).toFixed(8);
-        } else {
-            document.getElementById("tokenPrice").innerText = "En attente de cotation";
-        }
+        const bnbPrice = data.binancecoin.usd;
+
+        const dxpPrice = (wbnbReserve / dxpReserve) * bnbPrice;
+
+        document.getElementById("tokenPrice").innerText =
+            "$" + dxpPrice.toFixed(8);
+
     } catch (err) {
-        document.getElementById("tokenPrice").innerText = "Indisponible";
         console.error(err);
+        document.getElementById("tokenPrice").innerText = "Indisponible";
     }
 }
 
