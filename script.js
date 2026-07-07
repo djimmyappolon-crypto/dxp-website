@@ -153,3 +153,12 @@ document.getElementById("addToken").onclick = async () => {
         console.error(err);
     }
 };
+document.getElementById("copyContract").onclick = async () => {
+    try {
+        await navigator.clipboard.writeText(CONTRACT_ADDRESS);
+        alert("Adresse du contrat copiée !");
+    } catch (err) {
+        console.error(err);
+        alert(CONTRACT_ADDRESS);
+    }
+};
