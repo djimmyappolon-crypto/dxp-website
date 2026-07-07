@@ -96,3 +96,45 @@ async function updateTokenPrice() {
 
 updateTokenPrice();
 setInterval(updateTokenPrice, 30000);
+// Acheter DXP sur PancakeSwap
+document.getElementById("buyDXP").onclick = () => {
+    window.open(
+        "https://pancakeswap.finance/swap?outputCurrency=0x32487931C92Ce46C8280e81B723c8CDDD414Fa60",
+        "_blank"
+    );
+};
+
+// Voir le contrat sur BscScan
+document.getElementById("viewContract").onclick = () => {
+    window.open(
+        "https://bscscan.com/token/0x32487931C92Ce46C8280e81B723c8CDDD414Fa60",
+        "_blank"
+    );
+};
+
+// Ajouter DXP à MetaMask
+document.getElementById("addToken").onclick = async () => {
+
+    if (!window.ethereum) {
+        alert("Veuillez installer MetaMask.");
+        return;
+    }
+
+    try {
+
+        await window.ethereum.request({
+            method: "wallet_watchAsset",
+            params: {
+                type: "ERC20",
+                options: {
+                    address: "0x32487931C92Ce46C8280e81B723c8CDDD414Fa60",
+                    symbol: "DXP",
+                    decimals: 18
+                }
+            }
+        });
+
+    } catch (err) {
+        console.error(err);
+    }
+};
