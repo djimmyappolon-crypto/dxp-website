@@ -180,3 +180,29 @@ border-radius:12px;
 overflow:hidden;
 
 }
+.social-links{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:20px;
+}
+
+.social-links a{
+    text-decoration:none;
+    color:white;
+    background:#111827;
+    padding:14px;
+    border-radius:10px;
+    transition:.3s;
+    font-weight:bold;
+}
+
+.social-links a:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+.social-links i{
+    margin-right:10px;
+    color:#facc15;
+}
