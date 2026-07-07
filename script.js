@@ -84,7 +84,22 @@ async function updateTokenPrice() {
         const bnbPrice = data.binancecoin.usd;
 
         const dxpPrice = (wbnbReserve / dxpReserve) * bnbPrice;
+// Market Cap
+const totalSupply = 100000000;
+const marketCap = dxpPrice * totalSupply;
 
+// Liquidité (2 côtés de la paire)
+const liquidity = wbnbReserve * bnbPrice * 2;
+
+document.getElementById("marketCap").innerText =
+    "$" + marketCap.toLocaleString(undefined, {
+        maximumFractionDigits: 2
+    });
+
+document.getElementById("liquidity").innerText =
+    "$" + liquidity.toLocaleString(undefined, {
+        maximumFractionDigits: 2
+    });
         document.getElementById("tokenPrice").innerText =
             "$" + dxpPrice.toFixed(8);
 
