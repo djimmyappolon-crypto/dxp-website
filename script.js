@@ -13,7 +13,9 @@ let signer;
 let contract;
 
 async function loadTokenInfo() {
-  provider = new ethers.providers.JsonRpcProvider("https://bsc-dataseed.binance.org/");
+  const provider = new ethers.providers.JsonRpcProvider(
+    "https://bsc-dataseed.binance.org/"
+);
   contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, provider);
 
   const name = await contract.name();
