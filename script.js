@@ -168,7 +168,7 @@ document.getElementById("copyContract").onclick = async () => {
 async function updateHolders() {
     try {
         // Remplace TA_CLE_API_BSCSCAN par ta clé API BscScan
-        const apiKey = "HWX6BZVRQWVED8PE8UBR4YX369U3EEHQE5";
+        const apiKey = "F26A4D1EFI1A8UHSPK7RMQRKEV48EAG9KQ";
 
         const response = await fetch(
             `https://api.bscscan.com/api?module=token&action=tokenholdercount&contractaddress=${CONTRACT_ADDRESS}&apikey=${apiKey}`
