@@ -206,3 +206,56 @@ overflow:hidden;
     margin-right:10px;
     color:#facc15;
 }
+/* ===== Responsive téléphone ===== */
+@media (max-width: 768px) {
+
+    body{
+        overflow-x:hidden;
+    }
+
+    .container{
+        width:95%;
+        margin:auto;
+        padding:15px;
+    }
+
+    .buttons{
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        width:100%;
+    }
+
+    .buttons button{
+        width:100%;
+    }
+
+    .social-links{
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:15px;
+        margin-top:20px;
+    }
+
+    iframe{
+        width:100%;
+        height:420px;
+    }
+
+    .stats{
+        display:flex;
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .stat-card{
+        width:100%;
+    }
+
+    h1{
+        font-size:28px;
+        text-align:center;
+    }
+
+}
