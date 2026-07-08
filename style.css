@@ -181,10 +181,14 @@ overflow:hidden;
 
 }
 .social-links{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    margin-top:20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-links a{
+    width: 220px;
 }
 
 .social-links a{
