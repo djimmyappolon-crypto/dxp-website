@@ -164,3 +164,29 @@ document.getElementById("copyContract").onclick = async () => {
         alert(CONTRACT_ADDRESS);
     }
 };
+// Nombre de holders (via BscScan API)
+async function updateHolders() {
+    try {
+        // Remplace TA_CLE_API_BSCSCAN par ta clé API BscScan
+        const apiKey = "TA_CLE_API_BSCSCAN";
+
+        const response = await fetch(
+            `https://api.bscscan.com/api?module=token&action=tokenholdercount&contractaddress=${CONTRACT_ADDRESS}&apikey=${apiKey}`
+        );
+
+        const data = await response.json();
+
+        if (data.status === "1") {
+            document.getElementById("holders").innerText =
+                Number(data.result).toLocaleString();
+        } else {
+            document.getElementById("holders").innerText = "N/A";
+        }
+    } catch (error) {
+        console.error(error);
+        document.getElementById("holders").innerText = "N/A";
+    }
+}
+
+updateHolders();
+setInterval(updateHolders, 300000); // Mise à jour toutes les 5 minutes
