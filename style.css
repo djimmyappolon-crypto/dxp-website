@@ -270,3 +270,17 @@ body{
     50%{background-position:100% 50%;}
     100%{background-position:0% 50%;}
 }
+.info-card{
+    background:#111827;
+    border-radius:15px;
+    padding:18px;
+    margin-bottom:15px;
+    transition:0.3s;
+    border:1px solid rgba(255,255,255,0.05);
+}
+
+.info-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 20px rgba(250,204,21,.35);
+    border-color:#facc15;
+}
