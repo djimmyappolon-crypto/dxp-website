@@ -283,3 +283,16 @@ body{
     box-shadow:0 0 20px rgba(250,204,21,.35);
     border-color:#facc15;
 }
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.15);
+    text-align:center;
+    color:#94a3b8;
+    font-size:14px;
+}
+
+.footer p{
+    margin:6px 0;
+}
